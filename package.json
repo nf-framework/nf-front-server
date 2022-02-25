@@ -1,0 +1,36 @@
+{
+  "name": "@nfjs/front-server",
+  "version": "1.0.0",
+  "description": "Front server",
+  "license": "MIT",
+  "type": "module",
+  "main": "index.js",
+  "repository": {
+    "url": "https://github.com/nf-framework/nf-front-server.git"
+  },
+  "author": {
+    "name": "Dmitry Boikov",
+    "email": "boikovdv@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "Azat Yamalov",
+      "email": "yamalov.azat@live.com"
+    },
+    {
+      "name": "Andrey Maksimov",
+      "email": "andrmaxmail@gmail.com"
+    }
+  ],
+  "dependencies": {
+    "@nfjs/back": "^1.0.0",
+    "mime": "^2.5.2",
+    "lru-cache": "^6.0.0",
+    "terser": "^5.9.0",
+    "once": "^1.4.0"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./nf-module.js": "./nf-module.js"
+  }
+}
