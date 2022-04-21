@@ -4,5 +4,5 @@ const frontHooks = {
 }
 
 export { frontHooks };
-export { prepareResponse, getCacheKey, registerLibDir } from "./lib/server.js";
+export { prepareResponse, getCacheKey, registerLibDir, registerCustomElementsDir, customElements } from "./lib/server.js";
 export { MultiStream } from "./lib/multistream.js";
