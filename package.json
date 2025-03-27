@@ -1,6 +1,6 @@
 {
   "name": "@nfjs/front-server",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Front server",
   "license": "MIT",
   "type": "module",
