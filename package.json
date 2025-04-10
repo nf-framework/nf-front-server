@@ -27,7 +27,7 @@
     "mime": "^2.5.2",
     "lru-cache": "^6.0.0",
     "terser": "^5.9.0",
-    "minify-html-literals": "~1.3.5",
+    "@literals/html-css-minifier": "^3.0.1",
     "once": "^1.4.0"
   },
   "exports": {
