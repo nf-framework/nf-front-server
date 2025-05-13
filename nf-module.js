@@ -15,7 +15,7 @@ async function init() {
         const customOptions = context.customOptions;
         const cacheKey = getCacheKey(requestPath, customOptions);
         const response = await prepareResponse(cacheKey,
-            { customOptions, contentType: 'html', mimeType: 'text/html', addClientURLCacheString },
+            { customOptions, contentType: 'html', mimeType: 'text/html', addClientURLCacheString, noCache: true },
             () => {
                 return fs.createReadStream(requestPath);
             });
