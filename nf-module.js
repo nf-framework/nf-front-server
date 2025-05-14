@@ -31,6 +31,11 @@ async function init() {
             requestPath = await extension.getFiles('static/' + context.params['*']);
             staticPathsMap.set(context.params['*'], requestPath);
         }
+        if (!requestPath) {
+            context.code(404);
+            context.end();
+            return;
+        }
         const customOptions = context.customOptions;
         const cacheKey = getCacheKey(requestPath, customOptions);
         const response = await prepareResponse(cacheKey,
@@ -38,8 +43,13 @@ async function init() {
             () => {
                 return fs.createReadStream(requestPath);
             });
-        context.headers(response.headers);
-        context.send(response.stream);
+        if (context.req.headers['if-none-match'] && context.req.headers['if-none-match'] === response.headers.etag) {
+            context.code(304);
+            context.end();
+        } else {
+            context.headers(response.headers);
+            context.send(response.stream);
+        }
     });
 
     web.on('GET', '/nfjs-theme/', async (context) => {
