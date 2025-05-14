@@ -1,5 +1,5 @@
 import { web } from '@nfjs/back';
-import { getCacheKey, prepareResponse } from './lib/server.js';
+import { addClientURLCacheString, getCacheKey, prepareResponse } from './lib/server.js';
 import fs from 'fs';
 import { PassThrough } from 'stream';
 import { MultiStream } from './lib/multistream.js';
@@ -15,7 +15,7 @@ async function init() {
         const customOptions = context.customOptions;
         const cacheKey = getCacheKey(requestPath, customOptions);
         const response = await prepareResponse(cacheKey,
-            { customOptions, contentType: 'html', mimeType: 'text/html' },
+            { customOptions, contentType: 'html', mimeType: 'text/html', addClientURLCacheString, noCache: true },
             () => {
                 return fs.createReadStream(requestPath);
             });
