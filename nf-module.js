@@ -10,8 +10,9 @@ import mime from 'mime';
 const staticPathsMap = new Map();
 
 async function init() {
+    const rootRequestPath = await extension.getFiles('static/_index.html');
     web.on('GET', '/', {}, async (context) => {
-        const requestPath = await extension.getFiles('static/_index.html');
+        const requestPath = rootRequestPath;
         const customOptions = context.customOptions;
         const cacheKey = getCacheKey(requestPath, customOptions);
         const response = await prepareResponse(cacheKey,
